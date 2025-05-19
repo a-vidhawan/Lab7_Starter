@@ -1,7 +1,11 @@
+
+jest.setTimeout(30000);
+
+
 describe('Basic user flow for Website', () => {
   // First, visit the lab 7 website
   beforeAll(async () => {
-    await page.goto('https://cse110-sp25.github.io/CSE110-Shop/');
+    await page.goto('http://127.0.0.1:5500/src/index.html');
   });
 
   // Each it() call is a separate test
@@ -69,7 +73,7 @@ describe('Basic user flow for Website', () => {
      */
 
     const prodItems = await page.$$('product-item');
-    const shadow = await firstItem.getProperty('shadowRoot');
+    const shadow = await prodItems.getProperty('shadowRoot');
     const button = await shadow.$('button');
     await button.click();
     const innerText = await button.getProperty('innerText');
